@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        /* TODO(developer): Configure to sign app with a release key for testing.
+        release {
+            storeFile file('path/to/release/signing/key')
+            keyAlias 'release_key_alias'
+            keyPassword "${password}"
+            storePassword "${password}"
+        }*/
+        config {
+            keyAlias 'MyAndroidKey'
+            keyPassword 'minhduc87'
+            storeFile file('/home/kieuduc/Android/mykeystore.jks')
+            storePassword 'minhduc87'
+        }
+    }
+    compileSdkVersion 27
+
+    defaultConfig {
+        applicationId "com.iap.android.trivialdrive.kieuduc"
+        minSdkVersion 14
+        targetSdkVersion 27
+        versionCode 8
+        versionName "1.5"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // TODO(developer): uncomment below once config above is complete and uncommented.
+            // signingConfig signingConfigs.release
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.0.1'
+}
